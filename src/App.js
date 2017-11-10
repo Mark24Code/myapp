@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import  {List,Todo} from './List.js';
 import Clock from './Clock.js';
+import NameForm from './NameForm.js';
+import Reservation from './Reservation.js';
 
 class App extends Component {
   render() {
@@ -18,6 +20,8 @@ class App extends Component {
         <List name="AABBA"></List>
         <Todo tname="9999999"></Todo>
         <Clock></Clock>
+        <NameForm></NameForm>
+        <Reservation></Reservation>
       </div>
     );
   }
