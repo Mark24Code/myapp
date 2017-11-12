@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import  {List,Todo} from './List.js';
+import  List from './List.js';
 import Clock from './Clock.js';
+import Calculator from './Temp.js';
+import UnitComp from './myState.js';
 
 class App extends Component {
   render() {
@@ -16,8 +18,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <List name="AABBA"></List>
-        <Todo tname="9999999"></Todo>
         <Clock></Clock>
+        <Calculator></Calculator>
+        <UnitComp></UnitComp>
       </div>
     );
   }
