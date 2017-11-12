@@ -5,6 +5,8 @@ import  List from './List.js';
 import Clock from './Clock.js';
 import Calculator from './Temp.js';
 import UnitComp from './myState.js';
+import NameForm from './NameForm.js';
+import Reservation from './Reservation.js';
 
 class App extends Component {
   render() {
@@ -21,6 +23,8 @@ class App extends Component {
         <Clock></Clock>
         <Calculator></Calculator>
         <UnitComp></UnitComp>
+        <NameForm></NameForm>
+        <Reservation></Reservation>
       </div>
     );
   }
