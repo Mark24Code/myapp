@@ -10,6 +10,7 @@ import Reservation from './Reservation.js';
 import Inheritance from './Inheritance.js';
 import FilterableProductTable from './FilterableProductTable.js';
 import OfficialFilterableProductTable from './OfficialFilterableProductTable';
+import Grandparent from './Ref';
 
 class App extends Component {
   constructor(props){
@@ -43,6 +44,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <Grandparent/>
+        <div>-------- OfficialFilterableProductTable -------</div>
         {OfficialFilterableProductTable}
         <div>-------- me -------</div>
         <FilterableProductTable></FilterableProductTable>
