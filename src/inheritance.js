@@ -11,6 +11,10 @@ class Inheritance extends Component{
                 <p>This is Inheritance</p>
                 <div>=============</div>
                 {this.props.children}
+                <p>LLLLLLfet:</p>
+                {this.props.left}
+                <p>RRRRRRRR:</p>
+                {this.props.right}
             </div>
         );
     }
