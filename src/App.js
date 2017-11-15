@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-//import { BrowserRouter, Route,Switch } from 'react-router-dom';
-import { Route,Switch } from 'react-router-dom';
+import { Route,Switch,Link } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import routers from './routers';
 
 class Books extends Component {
   constructor(props){
@@ -10,12 +11,15 @@ class Books extends Component {
   }
 
   render() {
+    console.log('>>>>');
+    console.log(this.props.match)
     return (
       <div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Books</h1>
         </header>
+        <Link to='/'>Home</Link>
       </div>
     );
   }
@@ -59,14 +63,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/shelf" component={Shelf} />
-          <Route path="/books" component={Books} />
-        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export {App,Home,Books,Shelf};
