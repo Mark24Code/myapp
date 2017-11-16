@@ -1,71 +1,45 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Route,Switch,Link } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import routers from './routers';
+import React from 'react'
+import { render } from 'react-dom'
 
-class Books extends Component {
-  constructor(props){
-      super(props);
-  }
+const About = React.createClass({/*...*/})
+const Inbox = React.createClass({/*...*/})
+const Home = React.createClass({/*...*/})
+
+const App = React.createClass({
+  getInitialState() {
+    return {
+      route: window.location.hash.substr(1)
+    }
+  },
+
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      this.setState({
+        route: window.location.hash.substr(1)
+      })
+    })
+  },
 
   render() {
-    console.log('>>>>');
-    console.log(this.props.match)
+    let Child
+    switch (this.state.route) {
+      case '/about': Child = About; break;
+      case '/inbox': Child = Inbox; break;
+      default:      Child = Home;
+    }
+
     return (
       <div>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Books</h1>
-        </header>
-        <Link to='/'>Home</Link>
+        <h1>App</h1>
+        <ul>
+          <li><a href="#/about">About</a></li>
+          <li><a href="#/inbox">Inbox</a></li>
+        </ul>
+        <Child/>
       </div>
-    );
+    )
   }
-}
-class Shelf extends Component {
-  constructor(props){
-      super(props);
-  }
+})
 
-  render() {
-    return (
-      <div className="Butter">
-        <header className="App-header">
-          <h1 className="App-title">Shelf</h1>
-        </header>
-      </div>
-    );
-  }
-}
-class Home extends Component {
-  constructor(props){
-      super(props);
-  }
 
-  render() {
-    return (
-      <div className="Home">
-        <header className="App-header">
-          <h1 className="App-title">Home</h1>
-        </header>
-      </div>
-    );
-  }
-}
-
-class App extends Component {
-  constructor(props){
-      super(props);
-  }
-
-  render() {
-    return (
-      <div className="App">
-      </div>
-    );
-  }
-}
-
-export {App,Home,Books,Shelf};
+export default App;
