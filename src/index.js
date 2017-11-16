@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
-import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import App from './App.js'
+const App = function(props){
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App/>
-  </BrowserRouter>
-, document.getElementById('root'));
+    return (
+      <div>
+        <h1>App</h1>
+        <ul>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/inbox">Inbox</Link></li>
+        </ul>
+        {props.children}
+      </div>
+    )
+}
 
-registerServiceWorker();
+const About = function(){
+
+    return <h3>About</h3>
+}
+
+const Inbox = function(props){
+    return (
+      <div>
+        <h2>Inbox</h2>
+        {props.children || "Welcome to your Inbox"}
+      </div>
+    )
+}
+
+const Message = function(props){
+
+    return <h3>Message {props.params.id}</h3>
+}
+
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path="about" component={About} />
+      <Route path="inbox" component={Inbox}>
+        <Route path="messages/:id" component={Message} />
+      </Route>
+    </Route>
+  </Router>
+), document.body)
