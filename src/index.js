@@ -35,13 +35,40 @@ const Message = function(props){
     return <h3>Message {props.params.id}</h3>
 }
 
+const routes = {
+  path: '/',
+  component: App,
+  indexRoute: { component: App },
+  childRoutes: [
+    { path: 'about', component: About },
+    {
+      path: 'inbox',
+      component: Inbox,
+      childRoutes: [{
+        path: 'messages/:id',
+        onEnter: ({ params }, replace) => replace(`/messages/${params.id}`)
+      }]
+    },
+    {
+      component: Inbox,
+      childRoutes: [{
+        path: 'messages/:id', component: Message
+      }]
+    }
+  ]
+}
+
+// ReactDOM.render((
+//   <Router history={browserHistory}>
+//     <Route path="/" component={App}>
+//       <Route path="about" component={About} />
+//       <Route path="inbox" component={Inbox}>
+//         <Route path="messages/:id" component={Message} />
+//       </Route>
+//     </Route>
+//   </Router>
+// ), document.body)
+
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="about" component={About} />
-      <Route path="inbox" component={Inbox}>
-        <Route path="messages/:id" component={Message} />
-      </Route>
-    </Route>
-  </Router>
+  <Router history={browserHistory} routes={routes} />
 ), document.body)
