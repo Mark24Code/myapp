@@ -18,7 +18,7 @@ const App = function(props){
 
 const About = function(){
 
-    return <h3>About</h3>
+    return (<h3>About</h3>);
 }
 
 const Inbox = function(props){
