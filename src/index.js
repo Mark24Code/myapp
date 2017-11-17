@@ -35,10 +35,9 @@ const Message = function(props){
     return <h3>Message {props.params.id}</h3>
 }
 
-const routes = {
+const routes = [{
   path: '/',
   component: App,
-  indexRoute: { component: App },
   childRoutes: [
     { path: 'about', component: About },
     {
@@ -56,7 +55,7 @@ const routes = {
       }]
     }
   ]
-}
+}]
 
 // ReactDOM.render((
 //   <Router history={browserHistory}>
@@ -72,3 +71,6 @@ const routes = {
 ReactDOM.render((
   <Router history={browserHistory} routes={routes} />
 ), document.body)
+
+
+
