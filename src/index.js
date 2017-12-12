@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
+import {Counter,store} from './counter'
 
 const App = function(props){
 
@@ -10,6 +11,7 @@ const App = function(props){
         <ul>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/inbox">Inbox</Link></li>
+          <li><Link to="/counter">Redux 计数器</Link></li>
         </ul>
         {props.children}
       </div>
@@ -53,7 +55,8 @@ const routes = [{
       childRoutes: [{
         path: 'messages/:id', component: Message
       }]
-    }
+    },
+    { path: 'counter', component: Counter },
   ]
 }]
 
@@ -68,9 +71,10 @@ const routes = [{
 //   </Router>
 // ), document.body)
 
-ReactDOM.render((
+const render = ()=> ReactDOM.render((
   <Router history={browserHistory} routes={routes} />
 ), document.body)
 
-
+render()
+store.subscribe(render)
 
