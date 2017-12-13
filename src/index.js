@@ -3,16 +3,15 @@ import ReactDOM from 'react-dom';
 import { Router, Route , browserHistory } from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import reducers from './redux/reducers';
 import App from './pages/App';
 import CounterPage from './pages/CounterPage';
 import TodoPage from './pages/TodoPage';
+import reducers from './redux/reducers/index';
 
-// const store = createStore(reducers);
+const store = createStore(reducers);
 
 ReactDOM.render((
-  // <Provider store={store}>
-  <Provider store={'{}'}>
+  <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}></Route>
       <Route path="/counter" component={CounterPage}></Route>
