@@ -1,80 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory } from 'react-router';
-import {Counter,store} from './counter'
+import { Router, Route , browserHistory } from 'react-router';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+// import reducers from './redux/reducers';
+import App from './pages/App';
+import CounterPage from './pages/CounterPage';
+import TodoPage from './pages/TodoPage';
 
-const App = function(props){
+// const store = createStore(reducers);
 
-    return (
-      <div>
-        <h1>App</h1>
-        <ul>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/inbox">Inbox</Link></li>
-          <li><Link to="/counter">Redux 计数器</Link></li>
-        </ul>
-        {props.children}
-      </div>
-    )
-}
+ReactDOM.render((
+  // <Provider store={store}>
+  <Provider store={'{}'}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}></Route>
+      <Route path="/counter" component={CounterPage}></Route>
+      <Route path="/todo" component={TodoPage}></Route>
+    </Router>
+  </Provider>
+), document.getElementById('root'))
 
-const About = function(){
-
-    return (<h3>About</h3>);
-}
-
-const Inbox = function(props){
-    return (
-      <div>
-        <h2>Inbox</h2>
-        {props.children || "Welcome to your Inbox"}
-      </div>
-    )
-}
-
-const Message = function(props){
-
-    return <h3>Message {props.params.id}</h3>
-}
-
-const routes = [{
-  path: '/',
-  component: App,
-  childRoutes: [
-    { path: 'about', component: About },
-    {
-      path: 'inbox',
-      component: Inbox,
-      childRoutes: [{
-        path: 'messages/:id',
-        onEnter: ({ params }, replace) => replace(`/messages/${params.id}`)
-      }]
-    },
-    {
-      component: Inbox,
-      childRoutes: [{
-        path: 'messages/:id', component: Message
-      }]
-    },
-    { path: 'counter', component: Counter },
-  ]
-}]
-
-// ReactDOM.render((
-//   <Router history={browserHistory}>
-//     <Route path="/" component={App}>
-//       <Route path="about" component={About} />
-//       <Route path="inbox" component={Inbox}>
-//         <Route path="messages/:id" component={Message} />
-//       </Route>
-//     </Route>
-//   </Router>
-// ), document.body)
-
-const render = ()=> ReactDOM.render((
-  <Router history={browserHistory} routes={routes} />
-), document.body)
-
-render()
-store.subscribe(render)
 
