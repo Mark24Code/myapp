@@ -10,7 +10,6 @@ class App extends Component {
                 <h1>Hello React!</h1>
                 <ul>
                     <li><a href="/counter">Redux 计数器</a></li>
-                    <li><a href="/todo">Redux Todo</a></li>
                 </ul>
             </div>
         );

@@ -7,7 +7,11 @@ class CounterPage extends Component {
     render(){
         return (
             <div>
-                <h1>Redux Counter Page</h1>
+                <div>
+                    <h1>Redux Counter Page</h1>
+                    <a href="/">返回首页</a>
+                </div>
+
                 <Counter />
             </div>
         );

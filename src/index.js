@@ -5,7 +5,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './pages/App';
 import CounterPage from './pages/CounterPage';
-import TodoPage from './pages/TodoPage';
 import reducers from './redux/reducers/index';
 
 const store = createStore(reducers);
@@ -15,7 +14,6 @@ ReactDOM.render((
     <Router history={browserHistory}>
       <Route path="/" component={App}></Route>
       <Route path="/counter" component={CounterPage}></Route>
-      <Route path="/todo" component={TodoPage}></Route>
     </Router>
   </Provider>
 ), document.getElementById('root'))
